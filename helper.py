@@ -18,11 +18,14 @@ from typing import List, Dict, Tuple
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 class SNOMEDHelper:
-    def __init__(self, desc_file_path: str):
-        self.desc_df = self._load_snomed_descriptions(desc_file_path)
-        self.term_embeddings = self._build_embeddings_index()
-        self.index = self._build_faiss_index()
-
+    def __init__(self):
+        
+        self.embeddings_file = "term_embeddings.npy"
+        self.faiss_index_file = "faiss_index.index"
+        self.term_embeddings = np.load(self.embeddings_file)
+        self.index = faiss.read_index(self.faiss_index_file)
+        print("Saved new embeddings and FAISS index.")
+        
     def _load_snomed_descriptions(self, path: str) -> pd.DataFrame:
         desc_df = pd.read_csv(path, sep="\t", dtype=str)
         desc_df = desc_df[desc_df['active'] == '1']
@@ -149,7 +152,7 @@ def get_top_3_snomed_codes(helper: SNOMEDHelper, terms: List[str]) -> List[Dict]
         results.extend(matches)
     return results
 
-def get_matches(match_list):
+def get_matches(match_list,helper):
     all_matches = []
     for term in match_list:
         matches = helper.find_snomed_matches_difflib(term)
