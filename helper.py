@@ -41,10 +41,10 @@ class SNOMEDHelper:
         desc_df['term'] = desc_df['term'].astype(str).str.lower()
         return desc_df
 
-    def _build_embeddings_index(self):
-        terms = self.desc_df['term'].tolist()
-        embeddings = model.encode(terms, show_progress_bar=True, batch_size=48)
-        return normalize(np.array(embeddings).astype("float32"), axis=1)
+    #def _build_embeddings_index(self):
+    #    terms = self.desc_df['term'].tolist()
+    #    embeddings = model.encode(terms, show_progress_bar=True, batch_size=48)
+    #    return normalize(np.array(embeddings).astype("float32"), axis=1)
 
     #def _build_faiss_index(self):
     #    index = faiss.IndexFlatIP(self.term_embeddings.shape[1])
