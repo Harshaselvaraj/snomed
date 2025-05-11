@@ -31,8 +31,8 @@ def download_large_file(file_details):
     return FILE_NAME
 
 # Call the function to download the file
-file_path1 = download_large_file(accessory_files[0])
-st.success(f"File downloaded and saved as: {file_path1}")
+#file_path1 = download_large_file(accessory_files[0])
+#st.success(f"File downloaded and saved as: {file_path1}")
 
 file_path2 = download_large_file(accessory_files[1])
 st.success(f"File downloaded and saved as: {file_path2}")

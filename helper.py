@@ -20,9 +20,9 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 class SNOMEDHelper:
     def __init__(self):
         
-        self.embeddings_file = "term_embeddings.npy"
+        #self.embeddings_file = "term_embeddings.npy"
         self.faiss_index_file = "faiss_index.index"
-        self.term_embeddings = np.load(self.embeddings_file)
+        #self.term_embeddings = np.load(self.embeddings_file)
         self.index = faiss.read_index(self.faiss_index_file)
         print("Saved new embeddings and FAISS index.")
         
@@ -42,10 +42,10 @@ class SNOMEDHelper:
         embeddings = model.encode(terms, show_progress_bar=True, batch_size=48)
         return normalize(np.array(embeddings).astype("float32"), axis=1)
 
-    def _build_faiss_index(self):
-        index = faiss.IndexFlatIP(self.term_embeddings.shape[1])
-        index.add(self.term_embeddings)
-        return index
+    #def _build_faiss_index(self):
+    #    index = faiss.IndexFlatIP(self.term_embeddings.shape[1])
+    #    index.add(self.term_embeddings)
+    #    return index
 
     def search_snomed(self, term: str, top_k: int = 3) -> List[Dict[str, str]]:
         query_vec = model.encode([term])
