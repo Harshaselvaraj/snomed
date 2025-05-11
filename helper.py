@@ -14,6 +14,9 @@ from sklearn.preprocessing import normalize
 from difflib import get_close_matches
 from sentence_transformers import SentenceTransformer
 from typing import List, Dict, Tuple
+import os
+os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
+
 
 # Load Sentence Transformer model
 model = SentenceTransformer('all-MiniLM-L6-v2')

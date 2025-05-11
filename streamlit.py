@@ -9,6 +9,8 @@ import pandas as pd
 import json
 import gdown
 from helper import SNOMEDHelper, extract_terms_with_llm, get_top_3_snomed_codes, extract_best_codes_with_llm, get_matches
+import os
+os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
 
 
 accessory_files=[{
