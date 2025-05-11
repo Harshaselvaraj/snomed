@@ -8,6 +8,7 @@ import numpy as np
 import faiss
 import re
 import openai
+openai.api_key = "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"
 import pandas as pd
 from sklearn.preprocessing import normalize
 from difflib import get_close_matches
