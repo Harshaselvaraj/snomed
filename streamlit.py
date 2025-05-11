@@ -39,8 +39,8 @@ st.success(f"File downloaded and saved as: {file_path2}")
 
 
 # Set up the SNOMEDHelper with your local file
-snomed_file = "sct2_Description_Full-en_INT_20250501.txt"
-helper = SNOMEDHelper(snomed_file)
+#snomed_file = "sct2_Description_Full-en_INT_20250501.txt"
+helper = SNOMEDHelper()
 
 st.title("SNOMED CT Coder from Discharge Summary")
 
