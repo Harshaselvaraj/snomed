@@ -10,7 +10,7 @@ import json
 from snomed_helper import SNOMEDHelper, extract_terms_with_llm, get_top_3_snomed_codes, extract_best_codes_with_llm, get_matches
 
 # Set up the SNOMEDHelper with your local file
-snomed_file = "/Users/harsha/Downloads/safecare/SnomedCT_InternationalRF2_PRODUCTION_20250501T120000Z/Full/Terminology/sct2_Description_Full-en_INT_20250501.txt"
+snomed_file = "sct2_Description_Full-en_INT_20250501.txt"
 helper = SNOMEDHelper(snomed_file)
 
 st.title("SNOMED CT Coder from Discharge Summary")
@@ -23,7 +23,7 @@ if st.button("Extract SNOMED Codes"):
         top_3_codes = get_top_3_snomed_codes(helper, terms["clinical_findings"] + terms["procedures"])
         best_codes_json = extract_best_codes_with_llm(summary_text, top_3_codes)
         best_codes = json.loads(best_codes_json)
-        clinical_findings_procedures_df = pd.DataFrame(data_dict.items(), columns=["term", "snomed_concept_id"])
+        clinical_findings_procedures_df = pd.DataFrame(best_codes.items(), columns=["term", "snomed_concept_id"])
     st.subheader("Extracted Clinical Terms")
     st.write(terms)
 
