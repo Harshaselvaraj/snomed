@@ -8,7 +8,7 @@ import streamlit as st
 import pandas as pd
 import json
 import gdown
-from snomed_helper import SNOMEDHelper, extract_terms_with_llm, get_top_3_snomed_codes, extract_best_codes_with_llm, get_matches
+from helper import SNOMEDHelper, extract_terms_with_llm, get_top_3_snomed_codes, extract_best_codes_with_llm, get_matches
 
 
 accessory_files=[{
