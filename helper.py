@@ -27,7 +27,7 @@ class SNOMEDHelper:
         #self.embeddings_file = "term_embeddings.npy"
         self.faiss_index_file = "faiss_index.index"
         #self.term_embeddings = np.load(self.embeddings_file)
-        self.index = faiss.read_index(self.faiss_index_file)
+        self.index = faiss.read_index(self.faiss_index_file, faiss.IO_FLAG_MMAP)
         print("Saved new embeddings and FAISS index.")
         
     def _load_snomed_descriptions(self, path: str) -> pd.DataFrame:
